@@ -1,5 +1,6 @@
 from datetime import datetime
-from sqlalchemy import Column, Integer, DateTime, Boolean
+
+from sqlalchemy import Boolean, Column, DateTime, Integer
 from sqlalchemy.orm import declared_attr
 
 from app.core.db import Base

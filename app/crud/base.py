@@ -1,11 +1,11 @@
-from typing import TypeVar, Generic, Type, List, Optional
+from typing import Generic, List, Optional, Type, TypeVar
+
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.db import Base
 from app.models.user import User
-
 
 ModelType = TypeVar('ModelType', bound=Base)
 

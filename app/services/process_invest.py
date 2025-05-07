@@ -1,6 +1,7 @@
+from datetime import datetime
+
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from datetime import datetime
 
 from app.models.charity_project import CharityProject
 from app.models.donation import Donation

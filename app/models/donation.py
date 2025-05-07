@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, ForeignKey, Text
+from sqlalchemy import Column, ForeignKey, Integer, Text
+
 from app.models.abstract import AbstractBase
 
 

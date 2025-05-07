@@ -1,11 +1,10 @@
 from typing import Optional
+
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-
-from app.models.charity_project import CharityProject
 from app.crud.base import CRUDBase
-from app.schemas.charity_project import CharityProjectUpdate
+from app.models.charity_project import CharityProject
 
 
 class CRUDProject(CRUDBase):
