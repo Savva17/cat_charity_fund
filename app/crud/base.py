@@ -10,7 +10,7 @@ from app.models.user import User
 ModelType = TypeVar('ModelType', bound=Base)
 
 
-class CRUDBase(Generic[ModelType,]):
+class CRUDBase(Generic[ModelType, ]):
 
     def __init__(self, model: Type[ModelType]):
         self.model = model

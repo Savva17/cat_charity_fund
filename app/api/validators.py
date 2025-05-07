@@ -40,8 +40,7 @@ async def check_close_date(project: CharityProject) -> None:
 
 
 async def check_invested_amount_valid(
-        project: CharityProject, new_full_amount: int
-        ) -> None:
+        project: CharityProject, new_full_amount: int) -> None:
     if project.invested_amount > new_full_amount:
         raise HTTPException(
             status_code=422,
