@@ -1,3 +1,5 @@
+import logging
+
 from typing import Optional, Union
 
 from fastapi import Depends, Request
@@ -9,9 +11,13 @@ from fastapi_users_db_sqlalchemy import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings
+from app.core.constants import MIN_LENGTH_PASSWORD
 from app.core.db import get_async_session
 from app.models.user import User
 from app.schemas.user import UserCreate
+
+
+logger = logging.getLogger(__name__)
 
 bearer_transport = BearerTransport(tokenUrl="auth/jwt/login")
 
@@ -38,7 +44,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
             password: str,
             user: Union[UserCreate, User]
     ) -> None:
-        if len(password) < 3:
+        if len(password) < MIN_LENGTH_PASSWORD:
             raise InvalidPasswordException(
                 reason='Password should be at least 3 characters'
             )
@@ -52,7 +58,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
             user: User,
             request: Optional[Request] = None
     ):
-        print(f'Пользователь {user.email} зарегистрирован.')
+        logger.info(f'Пользователь {user.email} зарегистрирован.')
 
 
 async def get_user_manager(user_db=Depends(get_user_db)):
